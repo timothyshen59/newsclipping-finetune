@@ -8,7 +8,7 @@ python ingestion.py \
         --data-json path/to/data.json \
         --root-dir path/to/images/ \
         --split-json path/to/split.json \
-        --split-str train
+        --split-str "train"/"test"/"validate" 
 """
 
 import json 
@@ -55,9 +55,7 @@ def load_json_as_dict(path: Path) -> Dict[str, Dict[str,str]]:
     
 def normalize_entry(caption_id, image_id, root_dir: Path,  data_dict: Dict[str,Any], label: bool, split_str: str) -> Optional[Dict[str,Any]]: 
     """
-    """
-    # Load test/train/val as main dictioanry, and data.json as secondary dict to retreive info (image_path and caption), and label from dictionary 
-    
+    """    
     caption_entry = data_dict.get(caption_id)
     image_entry = data_dict.get(image_id) 
     

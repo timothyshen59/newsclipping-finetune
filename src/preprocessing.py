@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 
 """
-Preprocessing pipeline for VisualNews Dataset
+NewsCLIPpings Preprocessing Script
 
+Usage: 
+python preprocessing.py \
+        --data-json path/to/data.json \
+        --root-dir path/to/images/ \
+        --out-dir path/to/output_dir \
+        --split-json path/to/split.json \
+        --split-str "train"/"test"/"validate" 
 """
 
 
@@ -20,13 +27,13 @@ from typing import Dict, Any, Optional, Iterable, Iterator, List, TypeVar
 from itertools import islice
 
 from PIL import Image, UnidentifiedImageError
-from ingestion import iter_entries 
+from src.ingestion import iter_entries 
 
 
 logger = logging.getLogger(__name__)
 
 def setup_logger():
-    """Configure console logger."""
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(message)s",
